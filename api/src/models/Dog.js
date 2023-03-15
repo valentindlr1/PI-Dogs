@@ -29,10 +29,17 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    temperament: {
-      type: DataTypes.STRING,
+    createInDb: {
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      
+      defaultValue: true
+    },
+    temperamentId: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      allowNull: false
     }
+    
+  },{
+    timestamps: false
   });
 };
