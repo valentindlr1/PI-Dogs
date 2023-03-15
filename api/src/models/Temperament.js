@@ -9,9 +9,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     }
+  },{
+    timestamps: false
   });
 };

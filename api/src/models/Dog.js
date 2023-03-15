@@ -25,9 +25,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    age: {
+    life_span: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    temperament: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      
+    }
   });
 };
