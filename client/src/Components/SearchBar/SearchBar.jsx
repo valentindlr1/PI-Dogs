@@ -14,7 +14,7 @@ export default function SearchBar (props) {
     }
 
     return <div>
-        <input value={text} onChange={handleInputChange} type='search' placeholder=" Buscar por nombre..."/>
+        <input value={text} onChange={handleInputChange} type='search' placeholder=" Buscar por nombre..." className='searchBar'/>
         
     </div>
 }

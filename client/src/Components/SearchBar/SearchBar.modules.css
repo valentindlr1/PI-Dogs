@@ -1,0 +1,11 @@
+.searchBar {
+    font-size: large;
+    padding: 10px;
+    background-color: #E2D4B7;
+    border: none;
+    border-radius: 5px;
+}
+.searchBar:focus {
+    background-color: #f4e4c6;
+    border: none;
+}

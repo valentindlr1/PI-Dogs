@@ -9,6 +9,7 @@ export default function Form () {
         weight: "",
         height: "",
         life: "",
+        image: "",
         temperament: [],
     });
     const [errors, setErrors] = useState({});
@@ -33,7 +34,8 @@ export default function Form () {
                 name: newDog.name,
                 weight: newDog.weight,
                 height: newDog.height,
-                life_span: newDog.life
+                life_span: newDog.life,
+                image: newDog.image
             },
             temperament: newDog.temperament
         })
@@ -43,6 +45,7 @@ export default function Form () {
         weight: "",
         height: "",
         life: "",
+        image: "",
         temperament: [],
         })
     }
@@ -122,6 +125,9 @@ export default function Form () {
                         <label className="labels">Tiempo de vida: </label>
                         <input placeholder="Escribe los años..." type="text" value={newDog.life} onChange={handleChange} name="life" className={(errors?.life && "warning") || "text"}/>
                         <p className="danger">{errors?.life}</p>
+                        <label className="labels">URL de imagen: </label>
+                        <input placeholder="Pega aquí la URL..." type="text" value={newDog.image} onChange={handleChange} name="image" className={(errors?.image && "warning") || "text"}/>
+                        <p className="danger">{errors?.image}</p>
                         <div>
                         <label className="labels">Temperamento: </label>
                         <button type='button' className='openTemps' onClick={()=> {
