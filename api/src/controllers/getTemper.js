@@ -4,6 +4,9 @@ const { Temperament } = require('../db')
 const getTemper = async (req, res) => {
 
     try {
+        const check = await Temperament.count()
+        
+        console.log("CHECK >>", check)
         const response = await axios.get('https://api.thedogapi.com/v1/breeds/')
         const breeds = response.data
 
@@ -16,7 +19,7 @@ const getTemper = async (req, res) => {
         })
         
         let allTemps = [...new Set(tempers)]
-
+        if (check !== 0) return res.json(allTemps)
         for (let i = 0; i < allTemps.length; i++) {
             
             await Temperament.create({
@@ -25,6 +28,7 @@ const getTemper = async (req, res) => {
             })
             
         }
+        
 
         res.json(allTemps)
 

@@ -1,10 +1,13 @@
-const { Dog } = require('../db')
+const { Dog, Temperament } = require('../db')
 
 const addDog = async (req, res) => {
     try {
         const {dog, temperament} = req.body
-        const result = await Dog.create({...dog, temperamentId: temperament})
-        return res.json({result})
+        console.log(req.body)
+        const newDog = await Dog.create({...dog, temperament})
+        
+        return res.json({newDog})
+        
     } catch (error) {
         return res.status(400).json({error: error.message})
     }

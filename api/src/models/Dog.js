@@ -9,14 +9,15 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
-    },
-    image: {
       type: DataTypes.STRING,
       allowNull: false,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
     },
+    // image: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     height: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -34,11 +35,13 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true
     },
-    temperamentId: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
-      allowNull: false
+    temperament: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+      defaultValue: []
     }
     
+
   },{
     timestamps: false
   });

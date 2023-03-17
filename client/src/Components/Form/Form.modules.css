@@ -1,0 +1,252 @@
+/* .labels{
+    color: white;
+    
+}
+.warning{
+    border: 2px solid red;
+    border-radius: 15px;
+    height: 25px;
+    font-size: large;
+}
+.danger{
+    color: red;
+    display:flex;
+    justify-content: right;
+}
+.text{
+    border-radius: 15px;
+    height: 25px;
+    font-size: large;
+}
+.form{
+    /* display: flex; */
+    /* background: rgba(0, 0, 0, 0.6); */
+    
+    /* height: 350px; */
+    
+/* } */
+/* @media (max-width: 600px){ */
+    /* .form{ */
+        /* display: flex; */
+        /* background: rgba(0, 0, 0, 0.6); */
+       
+        /* height: 350px; */
+        
+    /* }
+} */
+/* .h2{
+    color: white;
+    font-family: cursive;
+    text-shadow: 0 0 20px;
+}
+.sub{
+    
+cursor: pointer;
+}
+.sub:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px #FFFFFF;
+   
+ } */ 
+ .warning{
+    border: 1px solid red;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(252, 0, 0, 0.1);
+    font-size: 16px;
+    padding: 10px;
+    width: 90%;
+}
+
+/*
+.danger{
+    color: red;
+    display:flex;
+    justify-content: right;
+}
+.text{
+    height: 25px;
+    font-size: large;
+} 
+
+/* TEMPERAMENTS SELECT: */
+
+.notShow {
+    display: none;
+}
+/* .doShow {
+    display: flex;
+    
+    max-width: 400px;
+
+} */
+
+
+/* Form.styles.css */
+
+/* Set some basic styles for the page */
+/* body {
+    background-color: #9C9583;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  } */
+  
+  /* Style the form container */
+  .container {
+    background-color: #E2D4B7;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  /* Style the form header */
+  .form {
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* Style the form fields */
+  .formDiv {
+    margin-bottom: 10px;
+  }
+  
+  .formDiv label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .text {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    padding: 10px;
+    width: 90%;
+  }
+  
+  /* Style the error messages */
+  .danger {
+    color: #FF0000;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  /* Style the temperaments section */
+  .doShow {
+    position: absolute;
+    left: 28%;
+    top: 115px;
+    background-color: #A1A499;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 800px;
+    padding: 20px;
+  }
+  
+  .tempTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 20px;
+  }
+  
+  .eachTemp {
+    background-color: #CCCCCC;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 5px 10px;
+  }
+  
+  .eachTemp:hover {
+    background-color: #555555;
+  }
+  
+  /* Style the submit button */
+  .sub {
+    background-color: #B0BBBF;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .sub:hover {
+    background-color: #CADBC8;
+  }
+
+  .markedTemp{
+    background-color: #3c3c3c;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 5px 10px;
+  }
+
+  .openTemps {
+    background-color: #9C9583;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    width: 50%;
+  }
+  .openTemps:hover{
+    background-color: #A1A499
+  }
+  .closeTemps {
+    background-color: #9C9583;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    width: 50%;
+    margin-top: 15px;
+  }
+  .closeTemps:hover {
+    background-color: #E2D4B7
+  }
+  .notAdded {
+    display: none;
+  }
+  .added {
+    position: absolute;
+    left: 28%;
+    top: 270px;
+    background-color: #CADBC8;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 800px;
+    padding: 20px;
+  }

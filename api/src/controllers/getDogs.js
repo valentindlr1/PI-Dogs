@@ -8,8 +8,20 @@ const getApi = async () => {
 
     let ApiData = []
 
+
     breeds.forEach(dog => {
-        ApiData.push(dog)
+        let temperament = dog.temperament
+        let temps = temperament ? temperament.split(', ') : []
+        ApiData.push({
+            name: dog.name,
+            weight: dog.weight.imperial,
+            height: dog.height.imperial,
+            id: dog.id,
+            life_span: dog.life_span,
+            temperament: temps,
+            origin: dog.origin,
+            image: dog.image.url
+        })
     })
 
     return ApiData

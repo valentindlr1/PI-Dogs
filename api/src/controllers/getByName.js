@@ -1,5 +1,6 @@
 const { Dog } = require('../db')
 const axios = require('axios')
+const {Op} = require('sequelize')
 
 const getApi = async (name) => {
     try {
@@ -11,7 +12,19 @@ const getApi = async (name) => {
         breeds.forEach(dog => {
             // let dogname = dog.name.toUpperCase()
             let found = dog.name.toUpperCase().split(name)
-            if (found.length > 1) result.push(dog)
+            let temperament = dog.temperament
+            let temps = temperament ? temperament.split(', ') : []
+
+            if (found.length > 1) result.push({
+                name: dog.name,
+                weight: dog.weight.imperial,
+                height: dog.height.imperial,
+                id: dog.id,
+                life_span: dog.life_span,
+                temperament: temps,
+                origin: dog.origin,
+                image: dog.image.url
+            })
         });
         console.log("API RESULT >>",result)
         return result
@@ -29,11 +42,11 @@ console.log('holaa')
         
         const { name } = req.query
         console.log("NAME >>", name)
-        let fromApi = await getApi(name)    // Cualquiera que contenga el name, en la Apo
+        let fromApi = await getApi(name)    // Cualquiera que contenga el name, en la Api
         console.log("FROM API >>",fromApi)
         let upperName = name[0].toUpperCase() + name.slice(1).toLowerCase()
 
-        let fromDB = await Dog.findAll({where: {name: upperName}}) // Sólo el name exacto, en la DB
+        let fromDB = await Dog.findAll({where: {name: {[Op.iLike]: `%${upperName}%`}}}) // Sólo el name exacto, en la DB-- corregido, no busca exacto
         
         let result = [...fromApi, ...fromDB]
         if (result.length === 0) throw new Error('No existe la raza ingresada')
