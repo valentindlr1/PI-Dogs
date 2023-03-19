@@ -1,0 +1,18 @@
+.welcome {
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 42%;
+    background-image: "../img/repetitive-bg.jpg";
+}
+.welcomeBut {
+    padding: 9px;
+    font-size: 18px;
+    width: 300px;
+    cursor: pointer;
+    background-color: #E2D4B7;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.welcomeBut:hover {
+    background-color: #CADBC8;
+}

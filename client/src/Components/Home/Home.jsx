@@ -34,6 +34,7 @@ export default function Home () {
 
     return <div className='homePage'>
         <div className='searchDiv'>
+            
             <h2 className='homeTitle'>HOME</h2>
         
         <SearchBar search={onSearch}/>

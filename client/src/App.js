@@ -1,28 +1,36 @@
 import './App.css';
-import { Switch, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Welcome from './Components/Welcome/Welcome';
 import Home from './Components/Home/Home';
 import NavBar from './Components/Navbar/NavBar';
 import Detail from './Components/Detail/Detail';
 import Form from './Components/Form/Form';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux'
+
 
 function App() {
-
-  const location = useLocation()
+  const access = useSelector(state => state.access)
   
+  const location = useLocation()
+  const navigate = useNavigate()
+  
+  useEffect(()=>{
+    if (!access) navigate('/')
+  }, [access])
   return (
     <div className="App">
       <div>
         {location.pathname !== '/' && <NavBar />}
       </div>
       
-       <Switch>
-        <Route path='/detail/:id' >{<Detail />}</Route>
-        <Route path='/form' >{<Form />}</Route>
-        <Route path='/home' >{<Home />}</Route>
-        <Route path='/' >{<Welcome />}</Route>
+       <Routes>
+        <Route path='/detail/:id' element={<Detail />}></Route>
+        <Route path='/form' element={<Form />}></Route>
+        <Route path='/home' element={<Home />}></Route>
+        <Route path='/' element={<Welcome />}></Route>
         
-      </Switch> 
+      </Routes> 
     </div>
   );
 }

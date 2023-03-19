@@ -6,7 +6,7 @@ const getTemper = async (req, res) => {
     try {
         const check = await Temperament.count()
         
-        console.log("CHECK >>", check)
+        
         const response = await axios.get('https://api.thedogapi.com/v1/breeds/')
         const breeds = response.data
 

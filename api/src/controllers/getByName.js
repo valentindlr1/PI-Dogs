@@ -41,9 +41,9 @@ console.log('holaa')
     try {
         
         const { name } = req.query
-        console.log("NAME >>", name)
+        
         let fromApi = await getApi(name)    // Cualquiera que contenga el name, en la Api
-        console.log("FROM API >>",fromApi)
+        
         let upperName = name[0].toUpperCase() + name.slice(1).toLowerCase()
 
         let fromDB = await Dog.findAll({where: {name: {[Op.iLike]: `%${upperName}%`}}}) // Sólo el name exacto, en la DB-- corregido, no busca exacto

@@ -9,14 +9,16 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
+      
     },
     image: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61ggYEHeHDL.jpg"
     },
     height: {
       type: DataTypes.STRING,
@@ -41,7 +43,6 @@ module.exports = (sequelize) => {
       defaultValue: []
     }
     
-
   },{
     timestamps: false
   });

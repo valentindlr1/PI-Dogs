@@ -6,9 +6,20 @@ import axios from 'axios'
 
 export default function Detail () {
 
-    const [dog, setDog] = useState({})
+    const [dog, setDog] = useState({
+        name: "",
+        weight: "",
+        height: "",
+        image: "",
+        life_span: "",
+        temperament: []
+    })
 
     const {id} = useParams()
+
+    const tempList = dog?.temperament.map((t, ind) => {
+        return <div className='detailTemps' key={ind}>{t}</div>
+    })
 
     useEffect(()=>{
         
@@ -16,25 +27,39 @@ export default function Detail () {
         .then(res=> res.data)
         .then(perro => {
             if(perro.name){
-                setDog(perro)
+                setDog({...dog, ...perro})
                 
             }
         })
         .catch(error => window.alert('oops... error: '+error.message ))
 
-        
+        return setDog({name: "",
+        weight: "",
+        height: "",
+        image: "",
+        life_span: "",
+        temperament: []})        
     },[id])
 
-    return <div>
-        <h2>{dog?.name}</h2>
-        <h3>{dog?.weight} Kg.</h3>
-        <h3>{dog?.height} cm.</h3>
-        <h3>{dog?.life_span}</h3>
-        <span>
-            <h3>Temperamentos</h3>
-            <p>{dog?.temperament}</p>
-        </span>
-        <img src={dog?.image}/>
-        <h4>ID: {id}</h4>
+    return <div className='detail'>
+        <h2 className='detailTitle'>{dog?.name}</h2>
+        <img src={dog?.image} className='detailImage'/>
+        <div className='listDetail'>
+        <h3 className='datos'>Peso aproximado: {dog?.weight} Kg.</h3>
+        <h3 className='datos'>Altura aproximada: {dog?.height} cm.</h3>
+        <h3 className='datos'>Esperanza de vida: {dog?.life_span}</h3>
+        
+            
+            <div className='temperDatos'>
+            <h3 >Temperamentos</h3>
+            <div>
+            {tempList}
+            </div>
+                
+                </div>
+        
+        </div>
+        
+        <h4 className='id'>ID: {id}</h4>
     </div>
 }

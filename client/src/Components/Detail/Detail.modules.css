@@ -1,0 +1,63 @@
+.detailImage {
+    max-width: 20%;
+    
+    border-radius: 10px;
+}
+.detailTitle{
+    color: #544c35;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #eee5ce;
+    max-width: 100%;
+    
+}
+.datos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee5ce;
+    max-width: 20%;
+    padding: 5px;
+    border-radius: 8px;
+}
+.detail {
+    /* display: flex; */
+    
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    
+}
+.detailTemps {
+    background-color: #3c3c3c;
+    border-radius: 5px;
+    color: #FFFFFF;
+    
+    display: inline-block;
+    font-size: 14px;
+    margin: 5px;
+    padding: 5px 10px;
+}
+.id {
+    max-width: 100%;
+}
+.listDetail {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    
+}
+.temperDatos {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #eee5ce;
+    max-width: 20%;
+    padding: 5px;
+    border-radius: 8px;
+}
