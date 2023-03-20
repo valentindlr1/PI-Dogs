@@ -21,3 +21,39 @@ body {
     width: 100%;
     background-color: #eee5ce;
 }
+.filter {
+    position: absolute;
+    right: 40px;
+    background-color: #9C9583;
+    font-size: 20px;
+    border-radius: 9px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.865);
+}
+.filter:hover{
+    background-color: #d6cdb4;
+}
+.filterText {
+    font-size: 20px;
+    background-color: #eee5ce;
+    padding: 3px;
+    
+    border-radius: 7px;
+}
+.filterDiv {
+    margin: 15px;
+}
+.notShow {
+    display: none;
+}
+.order {
+    position: absolute;
+    right: 170px;
+    background-color: #9C9583;
+    font-size: 20px;
+    border-radius: 9px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.865);
+}

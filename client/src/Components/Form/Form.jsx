@@ -6,8 +6,10 @@ import axios from 'axios';
 export default function Form () {
     const [newDog, setDog] = useState({
         name: "",
-        weight: "",
-        height: "",
+        weightMin: "",
+        weightMax: "",
+        heightMin: "",
+        heightMax: "",
         life: "",
         image: "",
         temperament: [],
@@ -31,7 +33,7 @@ export default function Form () {
 
         setErrors(validate(newDog))
 
-        if (!newDog.name.length || !newDog.weight.length || !newDog.height.length || !newDog.life.length || !newDog.temperament.length ){
+        if (!newDog.name.length || !newDog.weightMin.length || !newDog.weightMax.length || !newDog.heightMin.length || !newDog.heightMax.length || !newDog.life.length || !newDog.temperament.length ){
             setIncomplete(true)
             return
         }
@@ -40,8 +42,8 @@ export default function Form () {
         await axios.post('http://localhost:3001/dogs', {
             dog: {
                 name: newDog.name,
-                weight: newDog.weight,
-                height: newDog.height,
+                weight: newDog.weightMin + " - " + newDog.weightMax,
+                height: newDog.heightMin + " - " + newDog.heightMax,
                 life_span: newDog.life,
                 image: newDog.image
             },
@@ -50,8 +52,10 @@ export default function Form () {
         setAdded(true)
         setDog({
         name: "",
-        weight: "",
-        height: "",
+        weightMin: "",
+        weightMax: "",
+        heightMin: "",
+        heightMax: "",
         life: "",
         image: "",
         temperament: [],
@@ -133,10 +137,12 @@ export default function Form () {
                         <input placeholder="Escribe el nombre..." type="text" value={newDog.name} onChange={handleChange} name="name" className={(errors?.name && "warning") || "text"}/>
                         <p className="danger">{errors?.name}</p>
                         <label className="labels">Peso en Kg: </label>
-                        <input placeholder="Escribe el peso aprox..." type="text" value={newDog.weight} onChange={handleChange} name="weight" className={(errors?.weight && "warning") || "text"}/>
+                        <input placeholder="Peso mínimo..." type="number" value={newDog.weightMin} onChange={handleChange} name="weightMin" className={(errors?.weight && "warning") || "minmax"}/>
+                        <input placeholder="Peso máximo..." type="number" value={newDog.weightMax} onChange={handleChange} name="weightMax" className={(errors?.weight && "warning") || "minmax"}/>
                         <p className="danger">{errors?.weight}</p>
                         <label className="labels">Altura en cm: </label>
-                        <input placeholder="Escribe la altura aprox..." type="text" value={newDog.height} onChange={handleChange} name="height" className={(errors?.height && "warning") || "text"}/>
+                        <input placeholder="Altura mínima..." type="number" value={newDog.heightMin} onChange={handleChange} name="heightMin" className={(errors?.height && "warning") || "minmax"}/>
+                        <input placeholder="Altura máxima..." type="number" value={newDog.heightMax} onChange={handleChange} name="heightMax" className={(errors?.height && "warning") || "minmax"}/>
                         <p className="danger">{errors?.height}</p>
                         <label className="labels">Tiempo de vida: </label>
                         <input placeholder="Escribe los años..." type="text" value={newDog.life} onChange={handleChange} name="life" className={(errors?.life && "warning") || "text"}/>

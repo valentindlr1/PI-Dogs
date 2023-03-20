@@ -11,6 +11,6 @@ export default function Welcome () {
         
         <h1>BIENVENIDO A MI PI</h1>
         <Link to='/home'><button className='welcomeBut' onClick={()=>dispatch(login())}>INGRESAR</button></Link>
-        
+        <p>Made By Valentindlr1</p>
     </div>
 }
