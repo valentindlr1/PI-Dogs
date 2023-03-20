@@ -18,7 +18,12 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61ggYEHeHDL.jpg"
+      defaultValue: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61ggYEHeHDL.jpg",
+      validate: {
+        isEmpty(value) {
+          if (value === "") return this.setDataValue('image', 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61ggYEHeHDL.jpg')
+        }
+      }
     },
     height: {
       type: DataTypes.STRING,

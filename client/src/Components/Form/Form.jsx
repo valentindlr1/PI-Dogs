@@ -16,6 +16,7 @@ export default function Form () {
     const [temps, setTemps] = useState([])
     const [show, setShow] = useState(false)
     const [added, setAdded] = useState(false)
+    const [incomplete, setIncomplete] = useState(false)
     
 
     function handleChange (event){
@@ -27,8 +28,15 @@ export default function Form () {
     };
     async function handleSubmit(event){
         event.preventDefault();
-        console.log("Simulacion de agregado")
-        console.log("DOG >>", newDog)
+
+        setErrors(validate(newDog))
+
+        if (!newDog.name.length || !newDog.weight.length || !newDog.height.length || !newDog.life.length || !newDog.temperament.length ){
+            setIncomplete(true)
+            return
+        }
+        setIncomplete(false)
+
         await axios.post('http://localhost:3001/dogs', {
             dog: {
                 name: newDog.name,
@@ -110,6 +118,14 @@ export default function Form () {
                         <button className='closeTemps' onClick={()=> setAdded(false)} >Aceptar</button>
                     </div>
                 </div>
+            <div className={incomplete ? 'incompleteData' : 'completedData'}>
+                <div>
+                    <h2>Por favor completa los datos</h2>
+                </div>
+                <div>
+                    <button className='closeTemps' onClick={()=> setIncomplete(false)}>Aceptar</button>
+                </div>
+            </div>
                 <form onSubmit={handleSubmit} className='form'>
                     <div className="formDiv">
                         <h2 className="h2">Añade una nueva raza!</h2>

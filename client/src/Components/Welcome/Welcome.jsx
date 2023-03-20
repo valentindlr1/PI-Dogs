@@ -8,6 +8,7 @@ export default function Welcome () {
     const dispatch = useDispatch()
 
     return <div className='welcome'>
+        
         <h1>BIENVENIDO A MI PI</h1>
         <Link to='/home'><button className='welcomeBut' onClick={()=>dispatch(login())}>INGRESAR</button></Link>
         

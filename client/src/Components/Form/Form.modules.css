@@ -250,3 +250,16 @@ cursor: pointer;
     width: 800px;
     padding: 20px;
   }
+  .completedData {
+    display: none;
+  }
+  .incompleteData {
+    position: absolute;
+    left: 28%;
+    top: 270px;
+    background-color: #CADBC8;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 800px;
+    padding: 20px;
+  }
