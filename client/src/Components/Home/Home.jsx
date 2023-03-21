@@ -3,11 +3,13 @@ import SearchBar from '../SearchBar/SearchBar'
 import Cards from '../Cards/Cards'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { filter, order } from '../../redux/actions'
 
 export default function Home () {
 
     const [dogs, setDogs] = useState([])
-    const [filtered, setFilter] = useState([...dogs])
+    // const [filtered, setFilter] = useState([...dogs])
     const [show, setShow] = useState(false)
     const [temps, setTemps] = useState([])
     const [checkedTemp, setChecked] = useState(false)
@@ -16,6 +18,8 @@ export default function Home () {
     const [saveSelected, setSave] = useState([])
     const [orderFlag, setOrder] = useState(false)
     
+    const dispatch = useDispatch()
+    const filtered = useSelector(state => state.filtered)
 
     const onSearch = async (input) => {
         if(input !== ""){
@@ -68,21 +72,23 @@ export default function Home () {
     function handleOrder (event, fil, perros) {
         const option = event.target.value
         if(myCreated || checkedTemp){
-            let aux = fil
-            if (option === 'A-Z'){
-                 aux.sort((a, b)=> a.name.localeCompare(b.name))
-            }
-            if (option === 'Z-A'){
-                 aux.sort((a, b)=> b.name.localeCompare(a.name))
-            }
-            if (option === 'Peso ascendente'){
-                 aux.sort((a, b)=> Number(a.weight.split(' ')[0]) - Number(b.weight.split(' ')[0]))
-            }
-            if (option === 'Peso descendente'){
-                 aux.sort((a, b)=> Number(b.weight.split(' ')[0]) - Number(a.weight.split(' ')[0]))
-            }
+            // let aux = fil
+            // if (option === 'A-Z'){
+            //      aux.sort((a, b)=> a.name.localeCompare(b.name))
+            // }
+            // if (option === 'Z-A'){
+            //      aux.sort((a, b)=> b.name.localeCompare(a.name))
+            // }
+            // if (option === 'Peso ascendente'){
+            //      aux.sort((a, b)=> Number(a.weight.split(' ')[0]) - Number(b.weight.split(' ')[0]))
+            // }
+            // if (option === 'Peso descendente'){
+            //      aux.sort((a, b)=> Number(b.weight.split(' ')[0]) - Number(a.weight.split(' ')[0]))
+            // }
            
-            setFilter(aux)
+            // setFilter(aux)
+            dispatch(order(option, fil))
+
         } else {
             let aux = perros
             if (option === 'A-Z'){
@@ -101,7 +107,7 @@ export default function Home () {
             setDogs(aux)
         }
         setOrder(!orderFlag)
-        // SI CAMBIA EL ORDEN DEL STATE, PERO NO SE VE REFLEJADO
+       
     }
 
     useEffect( ()=>{
@@ -115,38 +121,10 @@ export default function Home () {
         
         // FILTROS:
         
-        let aux = []
-
-        if(checkedTemp){
-
-            dogs.forEach(dog => {
-                if(myCreated){
-                    if (typeof dog.id === 'string'){
-                        if (tempsSelected.every(temp => {
-                            return dog.temperament.includes(temp)
-                        })) aux.push(dog)
-                    }
-                } else {
-                    if (tempsSelected.every(temp => {
-                        return dog.temperament.includes(temp)
-                    })) aux.push(dog)
-                }
-                
-            })
-            
-        } else {
-            if(myCreated) {
-                dogs.forEach(dog => {
-                    if (typeof dog.id === 'string'){
-                        aux.push(dog)
-                    }
-                })
-                
-            } else aux = aux.filter(dog => typeof dog.id === 'number') 
-        }
-     
-        setFilter(aux)
+      
+        dispatch(filter(dogs, myCreated, checkedTemp, tempsSelected))
         
+        return 
     }, [tempsSelected, checkedTemp, myCreated])
 
 
@@ -156,7 +134,7 @@ export default function Home () {
             
         <SearchBar search={onSearch}/>
         <label className='order'>{"Ordenar por... "} 
-        <select onChange={(event)=>handleOrder(event, filtered, dogs)}>
+        <select onChange={(event)=>handleOrder(event, filtered, dogs)} className='selectOrder'>
             <optgroup label='Orden Alfabético'>
             <option>A-Z</option>
             <option>Z-A</option>

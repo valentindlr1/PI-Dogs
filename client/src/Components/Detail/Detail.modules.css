@@ -29,6 +29,7 @@
     justify-content: center;
     align-items: center;
     
+    
 }
 .detailTemps {
     background-color: #3c3c3c;
@@ -49,6 +50,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
+    
     
 }
 .temperDatos {

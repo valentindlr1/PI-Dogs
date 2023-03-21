@@ -7,7 +7,7 @@ export default function NavBar () {
 
     return <div className='bar'>
         <Link to='/home' className='home'>Home</Link>
-        <h1>Henry Dogs</h1>
+        <h1>The Dogs Page</h1>
         <Link to='/form' className='raza'>Añadir Raza</Link>
     </div>
 }

@@ -1,8 +1,10 @@
 .welcome {
     position: absolute;
-    margin-top: 15%;
-    margin-left: 42%;
-    
+    margin-top: 14%;
+    margin-left: 40%;
+    background-color: #5d574a70;
+    padding: 20px;
+    border-radius: 10px;
 }
 .welcomeBut {
     padding: 9px;

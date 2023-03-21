@@ -4,6 +4,7 @@
     background-color: #9C9583;
     justify-content: center;
     flex-wrap: wrap;
+    
 }
 body {
     background-color: #9C9583;
@@ -56,4 +57,10 @@ body {
     padding: 10px;
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.865);
+}
+
+.selectOrder {
+    background-color: #e7dec4;
+    font-size: large;
+    width: 180px;
 }
