@@ -25,6 +25,11 @@ export default function validate(inputs){
             life: "Introduce la esperanza de vida"
         }
     }
-    
+    if (!inputs.temperament.length){
+        errors = {
+            ...errors,
+            temperament: "Selecciona al menos un temperamento"
+        }
+    }
     return errors;
 }

@@ -45,13 +45,13 @@ export default function Detail () {
         <h2 className='detailTitle'>{dog?.name}</h2>
         <img src={dog?.image} className='detailImage'/>
         <div className='listDetail'>
-        <h3 className='datos'>Peso aproximado: {dog?.weight} Kg.</h3>
-        <h3 className='datos'>Altura aproximada: {dog?.height} cm.</h3>
-        <h3 className='datos'>Esperanza de vida: {dog?.life_span}</h3>
+        <h3 className='datos'>Estimated weight: {dog?.weight} Kg.</h3>
+        <h3 className='datos'>Estimated height: {dog?.height} cm.</h3>
+        <h3 className='datos'>Life span: {dog?.life_span}</h3>
         
             
             <div className='temperDatos'>
-            <h3 >Temperamentos</h3>
+            <h3 >Temperaments</h3>
             <div>
             {tempList}
             </div>

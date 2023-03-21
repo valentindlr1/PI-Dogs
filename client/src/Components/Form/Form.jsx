@@ -120,49 +120,49 @@ export default function Form () {
                 </div>
             <div className={(added && 'added') || 'notAdded'}>
                     <div>
-                        <h2 className='addedText'>Raza agregada con éxito!</h2>
+                        <h2 className='addedText'>Breed added successfully!</h2>
                     </div>
                     <div>
-                        <button className='closeTemps' onClick={()=> setAdded(false)} >Aceptar</button>
+                        <button className='closeTemps' onClick={()=> setAdded(false)} >Accept</button>
                     </div>
                 </div>
             <div className={incomplete ? 'incompleteData' : 'completedData'}>
                 <div>
-                    <h2>Por favor completa los datos</h2>
+                    <h2>Please complete the fields</h2>
                 </div>
                 <div>
-                    <button className='closeTemps' onClick={()=> setIncomplete(false)}>Aceptar</button>
+                    <button className='closeTemps' onClick={()=> setIncomplete(false)}>Accept</button>
                 </div>
             </div>
                 <form onSubmit={handleSubmit} className='form'>
                     <div className="formDiv">
-                        <h2 className="h2">Añade una nueva raza!</h2>
+                        <h2 className="h2">Add a new Breed!</h2>
                         
-                        <label className='labels'>Nombre: </label>
-                        <input placeholder="Escribe el nombre..." type="text" value={newDog.name} onChange={handleChange} name="name" className={(errors?.name && "warning") || "text"}/>
+                        <label className='labels'>Name: </label>
+                        <input placeholder="Write a name..." type="text" value={newDog.name} onChange={handleChange} name="name" className={(errors?.name && "warning") || "text"}/>
                         <p className="danger">{errors?.name}</p>
                         
-                        <label className="labels">Peso en Kg: </label>
-                        <input placeholder="Peso mínimo..." type="number" value={newDog.weightMin} onChange={handleChange} name="weightMin" className={(errors?.weight && "warningMinmax") || "minmax"}/>
-                        <input placeholder="Peso máximo..." type="number" value={newDog.weightMax} onChange={handleChange} name="weightMax" className={(errors?.weight && "warningMinmax") || "minmax"}/>
+                        <label className="labels">Weight in Kg: </label>
+                        <input placeholder="Min weight..." type="number" value={newDog.weightMin} onChange={handleChange} name="weightMin" className={(errors?.weight && "warningMinmax") || "minmax"}/>
+                        <input placeholder="Max weight..." type="number" value={newDog.weightMax} onChange={handleChange} name="weightMax" className={(errors?.weight && "warningMinmax") || "minmax"}/>
                         <br></br>
                         <p className="danger">{errors?.weight}</p>
                         
-                        <label className="labels">Altura en cm: </label>
-                        <input placeholder="Altura mínima..." type="number" value={newDog.heightMin} onChange={handleChange} name="heightMin" className={(errors?.height && "warningMinmax") || "minmax"}/>
-                        <input placeholder="Altura máxima..." type="number" value={newDog.heightMax} onChange={handleChange} name="heightMax" className={(errors?.height && "warningMinmax") || "minmax"}/>
+                        <label className="labels">Height in cm: </label>
+                        <input placeholder="Min height..." type="number" value={newDog.heightMin} onChange={handleChange} name="heightMin" className={(errors?.height && "warningMinmax") || "minmax"}/>
+                        <input placeholder="Max height..." type="number" value={newDog.heightMax} onChange={handleChange} name="heightMax" className={(errors?.height && "warningMinmax") || "minmax"}/>
                         <p className="danger">{errors?.height}</p>
                         
-                        <label className="labels">Tiempo de vida: </label>
-                        <input placeholder="Escribe los años..." type="text" value={newDog.life} onChange={handleChange} name="life" className={(errors?.life && "warning") || "text"}/>
+                        <label className="labels">Life span: </label>
+                        <input placeholder="Write estimated years..." type="text" value={newDog.life} onChange={handleChange} name="life" className={(errors?.life && "warning") || "text"}/>
                         <p className="danger">{errors?.life}</p>
                         <
-                            label className="labels">URL de imagen: </label>
-                        <input placeholder="Pega aquí la URL..." type="text" value={newDog.image} onChange={handleChange} name="image" className={(errors?.image && "warning") || "text"}/>
+                            label className="labels">image URL: </label>
+                        <input placeholder="Paste here the URL..." type="text" value={newDog.image} onChange={handleChange} name="image" className={(errors?.image && "warning") || "text"}/>
                         <p className="danger">{errors?.image}</p>
                         <div>
                         
-                        <label className="labels">Temperamento: </label>
+                        <label className="labels">Temperament: </label>
                         <button type='button' className='openTemps' onClick={()=> {
                             setShow(true)
                             if (!newDog.temperament.length) {
@@ -171,14 +171,14 @@ export default function Form () {
                                 })
                                 setSave([])
                             }
-                            }}>Elegir</button>
+                            }}>Select</button>
                         <div>
                             {selectedTemps}
                         </div>
                         </div>
                         <hr />
                         
-                        <button type="submit" className="sub">CREAR</button>
+                        <button type="submit" className="sub">CREATE</button>
 
                     </div>
             

@@ -119,13 +119,13 @@ export default function Home () {
         <div className='searchDiv'>
             
         <SearchBar search={onSearch}/>
-        <label className='order'>{"Ordenar por... "} 
+        <label className='order'>{"Order by... "} 
         <select onChange={(event)=>handleOrder(event, filtered, dogs)} className='selectOrder'>
-            <optgroup label='Orden Alfabético'>
-            <option>A-Z</option>
-            <option>Z-A</option>
+            <optgroup label='Alphabetic Order'>
+            <option>Ascendent</option>
+            <option>Descendent</option>
             </optgroup>
-            <optgroup label='Peso'>
+            <optgroup label='Weight'>
             <option>Peso ascendente</option>
             <option>Peso descendente</option>
             </optgroup>
@@ -133,10 +133,10 @@ export default function Home () {
         </select>
         </label>
         
-        <button className='filter' onClick={() =>{setShow(!show)}}>Filtros 🔍</button>
+        <button className='filter' onClick={() =>{setShow(!show)}}>Filters 🔍</button>
         </div>
         
-        <Cards dogs={(!tempsSelected.length && !myCreated) ? dogs : filtered } flag={(!filtered.length && !!tempsSelected.length || !dogs.length) && 'flag'} />
+        <Cards dogs={(!tempsSelected.length && !myCreated) ? dogs : filtered } flag={((!filtered.length && !!tempsSelected.length) || !dogs.length) && 'flag'} />
 
         <div className={(show && 'doShow') || 'notShow'}>
             <h2>Filtrar por:</h2>
@@ -159,7 +159,7 @@ export default function Home () {
                     {allTemps}
                     </div>
                     <div>
-                        <button className='closeTemps' onClick={()=> setShow(false)} >Aceptar</button>
+                        <button className='closeTemps' onClick={()=> setShow(false)} >Accept</button>
                     </div>
                 </div>
     </div>
