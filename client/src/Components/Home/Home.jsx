@@ -72,21 +72,7 @@ export default function Home () {
     function handleOrder (event, fil, perros) {
         const option = event.target.value
         if(myCreated || checkedTemp){
-            // let aux = fil
-            // if (option === 'A-Z'){
-            //      aux.sort((a, b)=> a.name.localeCompare(b.name))
-            // }
-            // if (option === 'Z-A'){
-            //      aux.sort((a, b)=> b.name.localeCompare(a.name))
-            // }
-            // if (option === 'Peso ascendente'){
-            //      aux.sort((a, b)=> Number(a.weight.split(' ')[0]) - Number(b.weight.split(' ')[0]))
-            // }
-            // if (option === 'Peso descendente'){
-            //      aux.sort((a, b)=> Number(b.weight.split(' ')[0]) - Number(a.weight.split(' ')[0]))
-            // }
            
-            // setFilter(aux)
             dispatch(order(option, fil))
 
         } else {
@@ -149,8 +135,8 @@ export default function Home () {
         
         <button className='filter' onClick={() =>{setShow(!show)}}>Filtros 🔍</button>
         </div>
-        {(!filtered.length && !!tempsSelected.length || !dogs.length) && <h3>{"NINGUNA COINCIDENCIA :("}</h3>}
-        <Cards dogs={(!tempsSelected.length && !myCreated) ? dogs : filtered} />
+        
+        <Cards dogs={(!tempsSelected.length && !myCreated) ? dogs : filtered } flag={(!filtered.length && !!tempsSelected.length || !dogs.length) && 'flag'} />
 
         <div className={(show && 'doShow') || 'notShow'}>
             <h2>Filtrar por:</h2>

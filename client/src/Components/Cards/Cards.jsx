@@ -11,7 +11,7 @@ export default function Cards (props) {
     const dispatch = useDispatch()
     const pages = useSelector(state => state.pages)
 
-    const {dogs} = props
+    const {dogs, flag} = props
 
     const showDogs = dogs.map((dog, index) => {
         return <Card key={index} name={dog.name} image={dog.image} weight={dog.weight} life={dog.life_span} temperament={dog.temperament} id={dog.id}/>
@@ -25,21 +25,35 @@ export default function Cards (props) {
             setCurrent(current-1)
         }
     }
+    function handleCurrent () {
+        if (current > Object.keys(pages).length) {
+            if (Object.keys(pages).length > 0){
+                setCurrent(Object.keys(pages).length)
+            } else setCurrent(1)
+        }
+    }
     
     useEffect(()=>{
         dispatch(paginate(showDogs))
+        handleCurrent()
         
-    },[dogs])
+    },[dogs, pages])
 
-    return <div className='cards'>
-        <div>
-            {(current !== 1) && <button name='prev' onClick={handlePage}>{'< Anterior'}</button>}
+    return <div className='cardsDiv'>
+        <div className='pages'>
+            {(current !== 1) && <button name='prev' onClick={handlePage} className='movePage'>{'< Anterior'}</button>}
             {<p>{current + " de " + Object.keys(pages).length}</p>}
-            {(current !== Object.keys(pages).length) && <button name='next' onClick={handlePage}>{'Siguiente >'}</button>}
+            {(current < Object.keys(pages).length) && <button name='next' onClick={handlePage} className='movePage'>{'Siguiente >'}</button>}
         </div>
-        
+        {flag === 'flag' && <h3>{"NINGUNA COINCIDENCIA :("}</h3>}
         <div className='cards'>
         {pages[current]}
+        </div>
+
+        <div className='pages'>
+            {(current !== 1) && <button name='prev' onClick={handlePage} className='movePage'>{'< Anterior'}</button>}
+            {<p>{current + " de " + Object.keys(pages).length}</p>}
+            {(current < Object.keys(pages).length) && <button name='next' onClick={handlePage} className='movePage'>{'Siguiente >'}</button>}
         </div>
         
     </div>

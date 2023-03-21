@@ -4,7 +4,7 @@
     background-color: #9C9583;
     justify-content: center;
     flex-wrap: wrap;
-    
+    flex-direction: column;
 }
 body {
     background-color: #9C9583;
@@ -15,6 +15,7 @@ body {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    flex-direction: row;
 }
 .homeTitle {
     color: #544c35;
