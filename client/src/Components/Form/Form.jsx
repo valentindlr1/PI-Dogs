@@ -19,6 +19,7 @@ export default function Form () {
     const [show, setShow] = useState(false)
     const [added, setAdded] = useState(false)
     const [incomplete, setIncomplete] = useState(false)
+    const [save, setSave] = useState([])
     
 
     function handleChange (event){
@@ -60,6 +61,7 @@ export default function Form () {
         image: "",
         temperament: [],
         })
+        
     }
     
     function handleTemps(event, value){
@@ -70,12 +72,14 @@ export default function Form () {
                 ...newDog,
                 "temperament": [...newDog.temperament, value]
             })
+            setSave([...save, event.target])
         } else {
             event.target.className = 'eachTemp'
             setDog({
                 ...newDog,
                 "temperament": [...newDog.temperament].filter(t => t !== value)
             })
+            
         }
         
     }
@@ -161,6 +165,12 @@ export default function Form () {
                         <label className="labels">Temperamento: </label>
                         <button type='button' className='openTemps' onClick={()=> {
                             setShow(true)
+                            if (!newDog.temperament.length) {
+                                save.forEach(target => {
+                                    target.className = 'eachTemp'
+                                })
+                                setSave([])
+                            }
                             }}>Elegir</button>
                         <div>
                             {selectedTemps}
