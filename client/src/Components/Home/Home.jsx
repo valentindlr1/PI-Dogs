@@ -81,7 +81,7 @@ export default function Home () {
             if (option === 'Peso descendente'){
                  aux.sort((a, b)=> Number(b.weight.split(' ')[0]) - Number(a.weight.split(' ')[0]))
             }
-            console.log(aux)
+           
             setFilter(aux)
         } else {
             let aux = perros
@@ -97,7 +97,7 @@ export default function Home () {
             if (option === 'Peso descendente'){
                  aux.sort((a, b)=> Number(b.weight.split(' ')[0]) - Number(a.weight.split(' ')[0]))
             }
-            console.log(aux)
+            
             setDogs(aux)
         }
         setOrder(!orderFlag)
@@ -147,7 +147,7 @@ export default function Home () {
      
         setFilter(aux)
         
-    }, [tempsSelected, checkedTemp, myCreated, orderFlag])
+    }, [tempsSelected, checkedTemp, myCreated])
 
 
     return <div className='homePage'>
@@ -169,9 +169,9 @@ export default function Home () {
         </select>
         </label>
         
-        <button className='filter' onClick={() =>{setShow(!show)}}>Filtros 🔎</button>
+        <button className='filter' onClick={() =>{setShow(!show)}}>Filtros 🔍</button>
         </div>
-        {!filtered.length && !!tempsSelected.length && <h3>{"NINGUNA COINCIDENCIA :("}</h3>}
+        {(!filtered.length && !!tempsSelected.length || !dogs.length) && <h3>{"NINGUNA COINCIDENCIA :("}</h3>}
         <Cards dogs={(!tempsSelected.length && !myCreated) ? dogs : filtered} />
 
         <div className={(show && 'doShow') || 'notShow'}>
