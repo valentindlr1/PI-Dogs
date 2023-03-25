@@ -1,4 +1,4 @@
-import { LOG, PAGE, ORDER, FILTER, SET_DOGS } from "./actions";
+import { LOG, PAGE, ORDER, FILTER, SET_DOGS, DELETE } from "./actions";
 
 const initialState = {
   access: false,
@@ -139,7 +139,14 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dogs: action.payload,
       };
+  
+    case DELETE:
+      let auxDelete = [...state.filtered].filter(dog => dog.id !== action.payload)
 
+      return {
+        ...state,
+        filtered: auxDelete
+      }
     default:
       return { ...state };
   }

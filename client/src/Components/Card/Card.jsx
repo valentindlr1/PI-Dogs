@@ -1,19 +1,17 @@
 import "./Card.modules.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { setDogs } from "../../redux/actions";
-import { useDispatch } from 'react-redux'
+import { deleteDog } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 const loading = require('../../img/spinning.gif')
-
 
 export default function Card(props) {
   const { name, image, weight, temperament, id } = props;
   const dispatch = useDispatch()
-
+  
   async function handleDelete(event) {
     await axios.delete("http://localhost:3001/dogs/" + id);
-    const dogs = (await axios.get("http://localhost:3001/dogs")).data
-    dispatch(setDogs(dogs))
+    dispatch(deleteDog(id))
   }
 
   return (

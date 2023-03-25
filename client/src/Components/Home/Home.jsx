@@ -17,6 +17,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filtered);
   const dogs = useSelector((state) => state.dogs);
+  
 
   const onSearch = async (input) => {
     try {
