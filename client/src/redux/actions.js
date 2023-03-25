@@ -1,42 +1,48 @@
 // import axios from "axios";
-export const LOG = "LOG"
+export const LOG = "LOG";
 export const PAGE = "PAGE";
 export const ORDER = "ORDER";
 export const FILTER = "FILTER";
+export const SET_DOGS = "SET_DOGS";
 
-export function login(){
-    return {
-        type: LOG,
-        payload: true
-    }
+export function login() {
+  return {
+    type: LOG,
+    payload: true,
+  };
 }
 
-export function logout(){
-    return {
-        type: LOG,
-        payload: false
-    }
+export function logout() {
+  return {
+    type: LOG,
+    payload: false,
+  };
 }
 
-export function paginate (allDogs) {
-    return {
-        type: PAGE,
-        payload: allDogs
-    }
+export function paginate(allDogs) {
+  return {
+    type: PAGE,
+    payload: allDogs,
+  };
 }
 
-export function filter (dogs, myCreated, checkedTemp, tempsSelected) {
-
-    return {
-        type: FILTER,
-        payload: {dogs, myCreated, checkedTemp, tempsSelected}
-    }
-
+export function filter( myCreated, checkedTemp, tempsSelected) {
+  return {
+    type: FILTER,
+    payload: { myCreated, checkedTemp, tempsSelected },
+  };
 }
 
-export function order (option, fil) {
+export function order(option, myCreated, checkedTemp, tempsSelected) {
+  return {
+    type: ORDER,
+    payload: {option, myCreated, checkedTemp, tempsSelected}
+  };
+}
+
+export function setDogs(dogs){
     return {
-        type: ORDER,
-        payload: {option, fil}
+        type: SET_DOGS,
+        payload: dogs
     }
 }

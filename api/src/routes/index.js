@@ -7,7 +7,6 @@ const { getByName } = require('../controllers/getByName');
 const { addDog } = require('../controllers/addDog');
 const { getTemper } = require('../controllers/getTemper');
 
-
 const router = Router();
 
 // Configurar los routers
@@ -18,7 +17,5 @@ router.get('/dogs/:idRaza', getDog)
 router.get('/name', getByName)
 router.post('/dogs', addDog)
 router.get('/temperaments', getTemper)
-
-
 
 module.exports = router;

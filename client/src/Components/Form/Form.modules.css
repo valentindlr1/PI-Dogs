@@ -1,53 +1,4 @@
-/* .labels{
-    color: white;
-    
-}
-.warning{
-    border: 2px solid red;
-    border-radius: 15px;
-    height: 25px;
-    font-size: large;
-}
-.danger{
-    color: red;
-    display:flex;
-    justify-content: right;
-}
-.text{
-    border-radius: 15px;
-    height: 25px;
-    font-size: large;
-}
-.form{
-    /* display: flex; */
-    /* background: rgba(0, 0, 0, 0.6); */
-    
-    /* height: 350px; */
-    
-/* } */
-/* @media (max-width: 600px){ */
-    /* .form{ */
-        /* display: flex; */
-        /* background: rgba(0, 0, 0, 0.6); */
-       
-        /* height: 350px; */
-        
-    /* }
-} */
-/* .h2{
-    color: white;
-    font-family: cursive;
-    text-shadow: 0 0 20px;
-}
-.sub{
-    
-cursor: pointer;
-}
-.sub:hover {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 15px #FFFFFF;
-   
- } */ 
+
  .warning{
     border: 1px solid red;
     border-radius: 5px;
@@ -67,49 +18,28 @@ cursor: pointer;
   margin-right: 10px;
 }
 
-/*
-.danger{
-    color: red;
-    display:flex;
-    justify-content: right;
-}
-.text{
-    height: 25px;
-    font-size: large;
-} 
+
 
 /* TEMPERAMENTS SELECT: */
 
 .notShow {
     display: none;
 }
-/* .doShow {
-    display: flex;
-    
-    max-width: 400px;
 
-} */
-
-
-/* Form.styles.css */
-
-/* Set some basic styles for the page */
-/* body {
-    background-color: #9C9583;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-  } */
   
   /* Style the form container */
   .container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
     background-color: #E2D4B7;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    max-width: 600px;
+    right: 33%;
+    left: 33%;
+    width: 600px;
     padding: 20px;
+    top: 16%;
   }
   
   /* Style the form header */
@@ -261,7 +191,7 @@ cursor: pointer;
     display: none;
   }
   .added {
-    position: absolute;
+    position: fixed;
     left: 28%;
     top: 270px;
     background-color: #CADBC8;
@@ -274,7 +204,7 @@ cursor: pointer;
     display: none;
   }
   .incompleteData {
-    position: absolute;
+    position: fixed;
     left: 28%;
     top: 270px;
     background-color: #CADBC8;
@@ -282,4 +212,10 @@ cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     width: 800px;
     padding: 20px;
+  }
+  .imageCreate {
+    
+    margin-top: 20px;
+    max-width: 40%;
+    border-radius: 8px;
   }

@@ -1,34 +1,34 @@
-export default function validate(inputs){
+export default function validate(inputs, evName){
     let errors = {};
     
-    if (inputs.name.length < 2) {
+    if (evName === "name" && inputs.name.length < 2) {
         errors = {
             ...errors,
-            name: "El nombre debe tener al menos 2 letras" 
+            name: "Name must have at least two characters length" 
         }
     }
-    if (!inputs.weightMin.length || !inputs.weightMax.length){
+    if ((evName === "weightMin" || evName === "weightMax") && (!inputs.weightMin.length || !inputs.weightMax.length)){
         errors = {
             ...errors,
-            weight: "Introduce el peso mínimo y máximo"
+            weight: "Set both min and max weight"
         }
     }
-    if (!inputs.heightMin.length || !inputs.heightMax.length){
+    if ((evName === "heightMin" || evName === "heightMax") && (!inputs.heightMin.length || !inputs.heightMax.length)){
         errors = {
             ...errors,
-            height: "Introduce la altura mínima y máxima"
+            height: "Set both min and max height"
         }
     }
-    if (!inputs.life.length){
+    if (evName === "life" && inputs.life.length === 0){
         errors = {
             ...errors,
-            life: "Introduce la esperanza de vida"
+            life: "Set a life span"
         }
     }
-    if (!inputs.temperament.length){
+    if (evName === "temperament" && !inputs.temperament.length){
         errors = {
             ...errors,
-            temperament: "Selecciona al menos un temperamento"
+            temperament: "Select at least one temperament"
         }
     }
     return errors;

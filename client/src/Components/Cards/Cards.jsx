@@ -14,7 +14,15 @@ export default function Cards (props) {
     const {dogs, flag} = props
 
     const showDogs = dogs.map((dog, index) => {
-        return <Card key={index} name={dog.name} image={dog.image} weight={dog.weight} life={dog.life_span} temperament={dog.temperament} id={dog.id}/>
+        return <Card 
+        key={index} 
+        name={dog.name} 
+        image={dog.image} 
+        weight={dog.weight} 
+        life={dog.life_span} 
+        temperament={dog.temperament} 
+        id={dog.id}
+        />
     })
     
     function handlePage (event) {
@@ -34,10 +42,11 @@ export default function Cards (props) {
     }
     
     useEffect(()=>{
+        
         dispatch(paginate(showDogs))
         handleCurrent()
         
-    },[dogs, pages])
+    },[dogs])
 
     return <div className='cardsDiv'>
         <div className='pages'>
