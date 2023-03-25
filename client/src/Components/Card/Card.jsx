@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { setDogs } from "../../redux/actions";
 import { useDispatch } from 'react-redux'
+const loading = require('../../img/spinning.gif')
 
 
 export default function Card(props) {
@@ -26,7 +27,7 @@ export default function Card(props) {
 
         <h2>Breed: {name}</h2>
         <h3>Weight: {weight} Kg.</h3>
-        <img src={image} alt="dog image" className="foto" />
+        {image ? <img src={image} alt="dog image" className="foto" /> : <img src={loading} alt="loading" className="foto" />}
         <div className="templist">
           <h3>Temperaments</h3>
           {temperament.map((temp, index) => (

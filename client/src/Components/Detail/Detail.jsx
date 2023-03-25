@@ -2,6 +2,7 @@ import './Detail.modules.css'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+const loading = require('../../img/spinning.gif')
 
 
 export default function Detail () {
@@ -43,7 +44,7 @@ export default function Detail () {
 
     return <div className='detail'>
         <h2 className='detailTitle'>{dog?.name}</h2>
-        <img src={dog?.image} className='detailImage'/>
+        {dog.image ? <img src={dog?.image} className='detailImage'/> : <img src={loading} alt="loading" className="detailImage" />}
         <div className='listDetail'>
         <h3 className='datos'>Estimated weight: {dog?.weight} Kg.</h3>
         <h3 className='datos'>Estimated height: {dog?.height} cm.</h3>
