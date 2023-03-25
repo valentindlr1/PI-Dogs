@@ -142,10 +142,12 @@ const rootReducer = (state = initialState, action) => {
   
     case DELETE:
       let auxDelete = [...state.filtered].filter(dog => dog.id !== action.payload)
+      let auxDelete2 = [...state.dogs].filter(dog => dog.id !== action.payload)
 
       return {
         ...state,
-        filtered: auxDelete
+        filtered: auxDelete,
+        dogs: auxDelete2
       }
     default:
       return { ...state };
