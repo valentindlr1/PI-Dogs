@@ -152,7 +152,10 @@ export default function Form() {
           <h2>{errors.existingName ? "Name already exists" : "Please complete the fields"}</h2>
         </div>
         <div>
-          <button className="closeTemps" onClick={() => setIncomplete(false)}>
+          <button className="closeTemps" onClick={() => {
+            setIncomplete(false)
+            setErrors({...errors, existingName: false})
+            }}>
             Accept
           </button>
         </div>
