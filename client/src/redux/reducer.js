@@ -4,7 +4,7 @@ const initialState = {
   access: false,
   pages: {},
   filtered: [],
-  dogs: [],
+  dogs: []
 };
 
 const rootReducer = (state = initialState, action) => {

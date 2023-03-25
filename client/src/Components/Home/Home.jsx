@@ -7,28 +7,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { filter, order, setDogs } from "../../redux/actions";
 
 export default function Home() {
-  // const [dogs, setDogs] = useState([]);
   const [show, setShow] = useState(false);
   const [temps, setTemps] = useState([]);
   const [checkedTemp, setChecked] = useState(false);
   const [tempsSelected, setSelected] = useState([]);
   const [myCreated, setMyCreated] = useState(false);
   const [saveSelected, setSave] = useState([]);
-  
 
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filtered);
   const dogs = useSelector((state) => state.dogs);
 
   const onSearch = async (input) => {
-    if (input !== "") {
-      const result = await axios.get(
-        "http://localhost:3001/name?name=" + input
-      );
-      const found = result.data;
-      dispatch(setDogs(found));
-    } else {
-      gets();
+    try {
+      if (input !== "") {
+        const result = await axios.get(
+          "http://localhost:3001/name?name=" + input
+        );
+        const found = result.data;
+        dispatch(setDogs(found));
+      } else {
+        gets();
+      }
+    } catch (error) {
+      dispatch(setDogs([]));
     }
   };
   const gets = async () => {
@@ -43,7 +45,6 @@ export default function Home() {
       event.target.className = "eachTemp";
       setSelected([...tempsSelected].filter((temp) => temp !== value));
     }
-    
   }
   function handleFilterTemp(event) {
     if (event.target.checked) {
@@ -56,7 +57,6 @@ export default function Home() {
       setSave(tempsSelected);
       setSelected([]);
     }
-    
   }
 
   const allTemps = temps.map((t, index) => (
@@ -75,12 +75,11 @@ export default function Home() {
 
   function handleOrder(event) {
     const option = event.target.value;
-    
+
     return dispatch(order(option, myCreated, checkedTemp, tempsSelected));
-    
   }
-  function handleFilters () {
-    dispatch(filter( myCreated, checkedTemp, tempsSelected));
+  function handleFilters() {
+    dispatch(filter(myCreated, checkedTemp, tempsSelected));
   }
 
   useEffect(() => {
@@ -95,8 +94,7 @@ export default function Home() {
 
     // FILTROS:
 
-    handleFilters()
-
+    handleFilters();
   }, [myCreated, checkedTemp, tempsSelected]);
 
   return (
