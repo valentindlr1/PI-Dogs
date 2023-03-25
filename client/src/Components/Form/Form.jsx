@@ -47,6 +47,14 @@ export default function Form() {
     }
     setIncomplete(false);
 
+    await axios.get('http://localhost:3001/dogs')
+    .then(res => res.data)
+    .then(dogs => {
+      dogs.forEach(dog => {
+        if (dog.name === newDog.name) return setErrors({...errors, existingName: true})
+      })
+    })
+
     await axios.post("http://localhost:3001/dogs", {
       dog: {
         name: newDog.name,
@@ -120,12 +128,12 @@ export default function Form() {
     <div className="container">
       <div className={(show && "doShow") || "notShow"}>
         <div>
-          <h2 className="tempTitle">Selecciona temperamentos</h2>
+          <h2 className="tempTitle">Select Temperaments</h2>
         </div>
         <div className="allTemps">{allTemps}</div>
         <div>
           <button className="closeTemps" onClick={() => setShow(false)}>
-            Aceptar
+            Accept
           </button>
         </div>
       </div>
@@ -139,9 +147,9 @@ export default function Form() {
           </button>
         </div>
       </div>
-      <div className={incomplete ? "incompleteData" : "completedData"}>
+      <div className={(incomplete || errors.existingName) ? "incompleteData" : "completedData"}>
         <div>
-          <h2>Please complete the fields</h2>
+          <h2>{errors.existingName ? "Name already exists" : "Please complete the fields"}</h2>
         </div>
         <div>
           <button className="closeTemps" onClick={() => setIncomplete(false)}>
@@ -155,7 +163,7 @@ export default function Form() {
 
           <label className="labels">Name: </label>
           <input
-            placeholder="Write a name..."
+            placeholder="Enter name..."
             type="text"
             value={newDog.name}
             onChange={(event) => {
@@ -169,7 +177,7 @@ export default function Form() {
 
           <label className="labels">Weight in Kg: </label>
           <input
-            placeholder="Min weight..."
+            placeholder="Enter Min weight..."
             type="number"
             value={newDog.weightMin}
             onChange={(event) => {
@@ -180,7 +188,7 @@ export default function Form() {
             className={(errors?.weight && "warningMinmax") || "minmax"}
           />
           <input
-            placeholder="Max weight..."
+            placeholder="Enter Max weight..."
             type="number"
             value={newDog.weightMax}
             onChange={(event) => {
@@ -195,7 +203,7 @@ export default function Form() {
 
           <label className="labels">Height in cm: </label>
           <input
-            placeholder="Min height..."
+            placeholder="Enter Min height..."
             type="number"
             value={newDog.heightMin}
             onChange={(event) => {
@@ -206,7 +214,7 @@ export default function Form() {
             className={(errors?.height && "warningMinmax") || "minmax"}
           />
           <input
-            placeholder="Max height..."
+            placeholder="Enter Max height..."
             type="number"
             value={newDog.heightMax}
             onChange={(event) => {
@@ -220,7 +228,7 @@ export default function Form() {
 
           <label className="labels">Life span: </label>
           <input
-            placeholder="Write estimated years..."
+            placeholder="Enter estimated years..."
             type="text"
             value={newDog.life}
             onChange={(event) => {
@@ -233,7 +241,7 @@ export default function Form() {
           <p className="danger">{errors?.life}</p>
           <label className="labels">image URL: </label>
           <input
-            placeholder="Paste here the URL..."
+            placeholder=" OPTIONAL - Paste here the URL..."
             type="text"
             value={newDog.image}
             onChange={handleChange}
