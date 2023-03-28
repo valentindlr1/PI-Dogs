@@ -17,7 +17,6 @@ export default function Home() {
   const dispatch = useDispatch();
   const filtered = useSelector((state) => state.filtered);
   const dogs = useSelector((state) => state.dogs);
-  
 
   const onSearch = async (input) => {
     try {
@@ -32,7 +31,7 @@ export default function Home() {
       }
     } catch (error) {
       dispatch(setDogs([]));
-      console.error("ERROR >>", error.message)
+      console.error("ERROR >>", error.message);
     }
   };
   const gets = async () => {

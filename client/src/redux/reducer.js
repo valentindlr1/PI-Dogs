@@ -5,7 +5,7 @@ const initialState = {
   pages: {},
   filtered: [],
   dogs: [],
-  onEdit: {}
+  onEdit: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -74,15 +74,15 @@ const rootReducer = (state = initialState, action) => {
           });
         } else auxx = auxx.filter((dog) => typeof dog.id === "number");
       }
-      
+
       return {
         ...state,
         filtered: [...auxx],
       };
 
     case ORDER:
-      var {option, myCreated, checkedTemp, tempsSelected} = action.payload;
-      
+      var { option, myCreated, checkedTemp, tempsSelected } = action.payload;
+
       if (myCreated || checkedTemp) {
         let auxOrder = [...state.filtered];
         if (option === "Ascending") {
@@ -103,7 +103,7 @@ const rootReducer = (state = initialState, action) => {
               Number(b.weight.split(" ")[0]) - Number(a.weight.split(" ")[0])
           );
         }
-        
+
         return {
           ...state,
           filtered: [...auxOrder],
@@ -128,10 +128,10 @@ const rootReducer = (state = initialState, action) => {
               Number(b.weight.split(" ")[0]) - Number(a.weight.split(" ")[0])
           );
         }
-        
+
         return {
           ...state,
-          dogs: [...auxOrder]
+          dogs: [...auxOrder],
         };
       }
 
@@ -140,21 +140,25 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dogs: action.payload,
       };
-  
+
     case DELETE:
-      let auxDelete = [...state.filtered].filter(dog => dog.id !== action.payload)
-      let auxDelete2 = [...state.dogs].filter(dog => dog.id !== action.payload)
+      let auxDelete = [...state.filtered].filter(
+        (dog) => dog.id !== action.payload
+      );
+      let auxDelete2 = [...state.dogs].filter(
+        (dog) => dog.id !== action.payload
+      );
 
       return {
         ...state,
         filtered: auxDelete,
-        dogs: auxDelete2
-      }
+        dogs: auxDelete2,
+      };
     case EDIT:
       return {
         ...state,
-        onEdit: action.payload
-      }
+        onEdit: action.payload,
+      };
     default:
       return { ...state };
   }

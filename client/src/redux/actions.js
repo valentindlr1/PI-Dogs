@@ -28,7 +28,7 @@ export function paginate(allDogs) {
   };
 }
 
-export function filter( myCreated, checkedTemp, tempsSelected) {
+export function filter(myCreated, checkedTemp, tempsSelected) {
   return {
     type: FILTER,
     payload: { myCreated, checkedTemp, tempsSelected },
@@ -38,27 +38,27 @@ export function filter( myCreated, checkedTemp, tempsSelected) {
 export function order(option, myCreated, checkedTemp, tempsSelected) {
   return {
     type: ORDER,
-    payload: {option, myCreated, checkedTemp, tempsSelected}
+    payload: { option, myCreated, checkedTemp, tempsSelected },
   };
 }
 
-export function setDogs(dogs){
-    return {
-        type: SET_DOGS,
-        payload: dogs
-    }
+export function setDogs(dogs) {
+  return {
+    type: SET_DOGS,
+    payload: dogs,
+  };
 }
 
-export function deleteDog(id){
+export function deleteDog(id) {
   return {
     type: DELETE,
-    payload: id
-  }
+    payload: id,
+  };
 }
 
-export function editDog(dog){
+export function editDog(dog) {
   return {
     type: EDIT,
-    payload: dog
-  }
+    payload: dog,
+  };
 }

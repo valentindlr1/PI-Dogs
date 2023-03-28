@@ -6,18 +6,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { editDog } from "../../redux/actions";
 
 export default function Form() {
-  const onEdit = useSelector(state => state.onEdit)
-  const [newDog, setDog] = useState((
-    onEdit.name ? onEdit : {
-    name: "",
-    weightMin: "",
-    weightMax: "",
-    heightMin: "",
-    heightMax: "",
-    life: "",
-    image: "",
-    temperament: [],
-  }));
+  const onEdit = useSelector((state) => state.onEdit);
+  const [newDog, setDog] = useState(
+    onEdit.name
+      ? onEdit
+      : {
+          name: "",
+          weightMin: "",
+          weightMax: "",
+          heightMin: "",
+          heightMax: "",
+          life: "",
+          image: "",
+          temperament: [],
+        }
+  );
   const [errors, setErrors] = useState({});
   const [temps, setTemps] = useState([]);
   const [show, setShow] = useState(false);
@@ -25,7 +28,7 @@ export default function Form() {
   const [incomplete, setIncomplete] = useState(false);
   const [save, setSave] = useState([]);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   function handleChange(event) {
     setDog({
@@ -38,7 +41,7 @@ export default function Form() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    
+
     try {
       if (
         !newDog.name.length ||
@@ -53,19 +56,20 @@ export default function Form() {
         return;
       }
       setIncomplete(false);
-  
-      if (!onEdit.name){
-        await axios.get('http://localhost:3001/dogs')
-        .then(res => res.data)
-        .then(dogs => {
-          dogs.forEach(dog => {
-            if (dog.name === newDog.name) {
-              setErrors({...errors, existingName: true})
-              throw new Error('Name already exists')
-            }
-          })
-        })
-    
+
+      if (!onEdit.name) {
+        await axios
+          .get("http://localhost:3001/dogs")
+          .then((res) => res.data)
+          .then((dogs) => {
+            dogs.forEach((dog) => {
+              if (dog.name === newDog.name) {
+                setErrors({ ...errors, existingName: true });
+                throw new Error("Name already exists");
+              }
+            });
+          });
+
         await axios.post("http://localhost:3001/dogs", {
           dog: {
             name: newDog.name,
@@ -83,11 +87,10 @@ export default function Form() {
           height: newDog.heightMin + " - " + newDog.heightMax,
           life_span: newDog.life,
           image: newDog.image,
-          temperament: newDog.temperament
-        })
+          temperament: newDog.temperament,
+        });
       }
-      
-      
+
       setAdded(true);
       setDog({
         name: "",
@@ -100,7 +103,7 @@ export default function Form() {
         temperament: [],
       });
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
 
@@ -122,7 +125,13 @@ export default function Form() {
   }
   const allTemps = temps.map((t, index) => (
     <span
-      className={!onEdit.name ? "eachTemp" : (onEdit.temperament.includes(t) ? "markedTemp" : "eachTemp")}
+      className={
+        !onEdit.name
+          ? "eachTemp"
+          : onEdit.temperament.includes(t)
+          ? "markedTemp"
+          : "eachTemp"
+      }
       name="temperament"
       value={t}
       onClick={(event) => {
@@ -148,8 +157,6 @@ export default function Form() {
         setTemps(arr);
       })
       .catch((err) => console.log(err.message));
-
-      
   }, [newDog]);
 
   return (
@@ -165,35 +172,57 @@ export default function Form() {
           </button>
         </div>
       </div>
-      <div className={((added && !errors.existingName)&& "added") || "notAdded"}>
+      <div className={(added && !errors.existingName && "added") || "notAdded"}>
         <div>
-          <h2 className="addedText">{!onEdit.name ? "Breed added successfully!" : (newDog === onEdit ? "No changes were made" : "Breed modified successfully!")}</h2>
+          <h2 className="addedText">
+            {!onEdit.name
+              ? "Breed added successfully!"
+              : newDog === onEdit
+              ? "No changes were made"
+              : "Breed modified successfully!"}
+          </h2>
         </div>
         <div>
-          <button className="closeTemps" onClick={() => {
-            setAdded(false)
-            dispatch(editDog({}))
-            }}>
+          <button
+            className="closeTemps"
+            onClick={() => {
+              setAdded(false);
+              dispatch(editDog({}));
+            }}
+          >
             Accept
           </button>
         </div>
       </div>
-      <div className={(incomplete || errors.existingName) ? "incompleteData" : "completedData"}>
+      <div
+        className={
+          incomplete || errors.existingName ? "incompleteData" : "completedData"
+        }
+      >
         <div>
-          <h2>{errors.existingName ? "Name already exists" : "Please complete the fields"}</h2>
+          <h2>
+            {errors.existingName
+              ? "Name already exists"
+              : "Please complete the fields"}
+          </h2>
         </div>
         <div>
-          <button className="closeTemps" onClick={() => {
-            setIncomplete(false)
-            setErrors({...errors, existingName: false})
-            }}>
+          <button
+            className="closeTemps"
+            onClick={() => {
+              setIncomplete(false);
+              setErrors({ ...errors, existingName: false });
+            }}
+          >
             Accept
           </button>
         </div>
       </div>
       <form onSubmit={handleSubmit} className="form">
         <div className="formDiv">
-          <h2 className="h2">{!onEdit.name ? "Add a new Breed!": "Edit your Dog!"}</h2>
+          <h2 className="h2">
+            {!onEdit.name ? "Add a new Breed!" : "Edit your Dog!"}
+          </h2>
 
           <label className="labels">Name: </label>
           <input
