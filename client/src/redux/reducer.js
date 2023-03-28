@@ -1,10 +1,11 @@
-import { LOG, PAGE, ORDER, FILTER, SET_DOGS, DELETE } from "./actions";
+import { LOG, PAGE, ORDER, FILTER, SET_DOGS, DELETE, EDIT } from "./actions";
 
 const initialState = {
   access: false,
   pages: {},
   filtered: [],
-  dogs: []
+  dogs: [],
+  onEdit: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -148,6 +149,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         filtered: auxDelete,
         dogs: auxDelete2
+      }
+    case EDIT:
+      return {
+        ...state,
+        onEdit: action.payload
       }
     default:
       return { ...state };

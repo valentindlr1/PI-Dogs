@@ -51,3 +51,17 @@
 .deleteDog:hover {
     background-color: rgba(255, 0, 0, 0.271);
 }
+.editDog {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgba(255, 0, 0, 0.114);
+    margin: 3px;
+    margin-left: 300px;
+    cursor: pointer;
+}
+.editDog:hover {
+    background-color: rgba(255, 0, 0, 0.271);
+}

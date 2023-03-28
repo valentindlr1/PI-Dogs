@@ -5,6 +5,7 @@ export const ORDER = "ORDER";
 export const FILTER = "FILTER";
 export const SET_DOGS = "SET_DOGS";
 export const DELETE = "DELETE";
+export const EDIT = "EDIT";
 
 export function login() {
   return {
@@ -52,5 +53,12 @@ export function deleteDog(id){
   return {
     type: DELETE,
     payload: id
+  }
+}
+
+export function editDog(dog){
+  return {
+    type: EDIT,
+    payload: dog
   }
 }

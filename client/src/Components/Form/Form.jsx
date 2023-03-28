@@ -2,6 +2,8 @@ import "./Form.modules.css";
 import validate from "./validate";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { editDog } from "../../redux/actions";
 
 export default function Form() {
   const [newDog, setDog] = useState({
@@ -20,6 +22,9 @@ export default function Form() {
   const [added, setAdded] = useState(false);
   const [incomplete, setIncomplete] = useState(false);
   const [save, setSave] = useState([]);
+
+  const dispatch = useDispatch()
+  const onEdit = useSelector(state => state.onEdit)
 
   function handleChange(event) {
     setDog({
@@ -129,6 +134,10 @@ export default function Form() {
         setTemps(arr);
       })
       .catch((err) => console.log(err.message));
+
+      if(onEdit.name){
+        setDog(onEdit)
+      }
   }, [newDog]);
 
   return (
@@ -146,10 +155,13 @@ export default function Form() {
       </div>
       <div className={((added && !errors.existingName)&& "added") || "notAdded"}>
         <div>
-          <h2 className="addedText">Breed added successfully!</h2>
+          <h2 className="addedText">{!onEdit.name ? "Breed added successfully!" : "Breed modified successfully!"}</h2>
         </div>
         <div>
-          <button className="closeTemps" onClick={() => setAdded(false)}>
+          <button className="closeTemps" onClick={() => {
+            setAdded(false)
+            dispatch(editDog({}))
+            }}>
             Accept
           </button>
         </div>
@@ -169,7 +181,7 @@ export default function Form() {
       </div>
       <form onSubmit={handleSubmit} className="form">
         <div className="formDiv">
-          <h2 className="h2">Add a new Breed!</h2>
+          <h2 className="h2">{!onEdit.name ? "Add a new Breed!": "Edit your Dog!"}</h2>
 
           <label className="labels">Name: </label>
           <input
@@ -249,7 +261,7 @@ export default function Form() {
             className={(errors?.life && "warning") || "text"}
           />
           <p className="danger">{errors?.life}</p>
-          <label className="labels">image URL: </label>
+          <label className="labels">Image URL: </label>
           <input
             placeholder=" OPTIONAL - Paste here the URL..."
             type="text"
@@ -289,7 +301,7 @@ export default function Form() {
           <hr />
 
           <button type="submit" className="sub">
-            CREATE
+            {!onEdit.name ? "CREATE" : "MODIFY"}
           </button>
         </div>
       </form>

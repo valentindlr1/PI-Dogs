@@ -18,7 +18,8 @@ export default function Cards (props) {
         key={index} 
         name={dog.name} 
         image={dog.image} 
-        weight={dog.weight} 
+        weight={dog.weight}
+        height={dog.height}
         life={dog.life_span} 
         temperament={dog.temperament} 
         id={dog.id}
