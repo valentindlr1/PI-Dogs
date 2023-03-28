@@ -32,6 +32,7 @@ export default function Home() {
       }
     } catch (error) {
       dispatch(setDogs([]));
+      console.error("ERROR >>", error.message)
     }
   };
   const gets = async () => {

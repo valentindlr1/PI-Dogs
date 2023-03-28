@@ -32,50 +32,57 @@ export default function Form() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    if (
-      !newDog.name.length ||
-      !newDog.weightMin.length ||
-      !newDog.weightMax.length ||
-      !newDog.heightMin.length ||
-      !newDog.heightMax.length ||
-      !newDog.life.length ||
-      !newDog.temperament.length
-    ) {
-      setIncomplete(true);
-      return;
-    }
-    setIncomplete(false);
-
-    await axios.get('http://localhost:3001/dogs')
-    .then(res => res.data)
-    .then(dogs => {
-      dogs.forEach(dog => {
-        if (dog.name === newDog.name) return setErrors({...errors, existingName: true})
+    try {
+      if (
+        !newDog.name.length ||
+        !newDog.weightMin.length ||
+        !newDog.weightMax.length ||
+        !newDog.heightMin.length ||
+        !newDog.heightMax.length ||
+        !newDog.life.length ||
+        !newDog.temperament.length
+      ) {
+        setIncomplete(true);
+        return;
+      }
+      setIncomplete(false);
+  
+      await axios.get('http://localhost:3001/dogs')
+      .then(res => res.data)
+      .then(dogs => {
+        dogs.forEach(dog => {
+          if (dog.name === newDog.name) {
+            setErrors({...errors, existingName: true})
+            throw new Error('Name already exists')
+          }
+        })
       })
-    })
-
-    await axios.post("http://localhost:3001/dogs", {
-      dog: {
-        name: newDog.name,
-        weight: newDog.weightMin + " - " + newDog.weightMax,
-        height: newDog.heightMin + " - " + newDog.heightMax,
-        life_span: newDog.life,
-        image: newDog.image,
-      },
-      temperament: newDog.temperament,
-    });
-    setAdded(true);
-    setDog({
-      name: "",
-      weightMin: "",
-      weightMax: "",
-      heightMin: "",
-      heightMax: "",
-      life: "",
-      image: "",
-      temperament: [],
-    });
+  
+      await axios.post("http://localhost:3001/dogs", {
+        dog: {
+          name: newDog.name,
+          weight: newDog.weightMin + " - " + newDog.weightMax,
+          height: newDog.heightMin + " - " + newDog.heightMax,
+          life_span: newDog.life,
+          image: newDog.image,
+        },
+        temperament: newDog.temperament,
+      });
+      
+      setAdded(true);
+      setDog({
+        name: "",
+        weightMin: "",
+        weightMax: "",
+        heightMin: "",
+        heightMax: "",
+        life: "",
+        image: "",
+        temperament: [],
+      });
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   function handleTemps(event, value) {
@@ -137,7 +144,7 @@ export default function Form() {
           </button>
         </div>
       </div>
-      <div className={(added && "added") || "notAdded"}>
+      <div className={((added && !errors.existingName)&& "added") || "notAdded"}>
         <div>
           <h2 className="addedText">Breed added successfully!</h2>
         </div>
