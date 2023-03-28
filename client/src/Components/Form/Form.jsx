@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { editDog } from "../../redux/actions";
 
 export default function Form() {
-  const [newDog, setDog] = useState({
+  const onEdit = useSelector(state => state.onEdit)
+  const [newDog, setDog] = useState((
+    onEdit.name ? onEdit : {
     name: "",
     weightMin: "",
     weightMax: "",
@@ -15,7 +17,7 @@ export default function Form() {
     life: "",
     image: "",
     temperament: [],
-  });
+  }));
   const [errors, setErrors] = useState({});
   const [temps, setTemps] = useState([]);
   const [show, setShow] = useState(false);
@@ -24,7 +26,6 @@ export default function Form() {
   const [save, setSave] = useState([]);
 
   const dispatch = useDispatch()
-  const onEdit = useSelector(state => state.onEdit)
 
   function handleChange(event) {
     setDog({
@@ -37,6 +38,7 @@ export default function Form() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    
     try {
       if (
         !newDog.name.length ||
@@ -52,27 +54,39 @@ export default function Form() {
       }
       setIncomplete(false);
   
-      await axios.get('http://localhost:3001/dogs')
-      .then(res => res.data)
-      .then(dogs => {
-        dogs.forEach(dog => {
-          if (dog.name === newDog.name) {
-            setErrors({...errors, existingName: true})
-            throw new Error('Name already exists')
-          }
+      if (!onEdit.name){
+        await axios.get('http://localhost:3001/dogs')
+        .then(res => res.data)
+        .then(dogs => {
+          dogs.forEach(dog => {
+            if (dog.name === newDog.name) {
+              setErrors({...errors, existingName: true})
+              throw new Error('Name already exists')
+            }
+          })
         })
-      })
-  
-      await axios.post("http://localhost:3001/dogs", {
-        dog: {
-          name: newDog.name,
+    
+        await axios.post("http://localhost:3001/dogs", {
+          dog: {
+            name: newDog.name,
+            weight: newDog.weightMin + " - " + newDog.weightMax,
+            height: newDog.heightMin + " - " + newDog.heightMax,
+            life_span: newDog.life,
+            image: newDog.image,
+          },
+          temperament: newDog.temperament,
+        });
+      } else {
+        await axios.put("http://localhost:3001/dogs", {
+          name: onEdit.name,
           weight: newDog.weightMin + " - " + newDog.weightMax,
           height: newDog.heightMin + " - " + newDog.heightMax,
           life_span: newDog.life,
           image: newDog.image,
-        },
-        temperament: newDog.temperament,
-      });
+          temperament: newDog.temperament
+        })
+      }
+      
       
       setAdded(true);
       setDog({
@@ -108,7 +122,7 @@ export default function Form() {
   }
   const allTemps = temps.map((t, index) => (
     <span
-      className="eachTemp"
+      className={!onEdit.name ? "eachTemp" : (onEdit.temperament.includes(t) ? "markedTemp" : "eachTemp")}
       name="temperament"
       value={t}
       onClick={(event) => {
@@ -135,9 +149,7 @@ export default function Form() {
       })
       .catch((err) => console.log(err.message));
 
-      if(onEdit.name){
-        setDog(onEdit)
-      }
+      
   }, [newDog]);
 
   return (
@@ -155,7 +167,7 @@ export default function Form() {
       </div>
       <div className={((added && !errors.existingName)&& "added") || "notAdded"}>
         <div>
-          <h2 className="addedText">{!onEdit.name ? "Breed added successfully!" : "Breed modified successfully!"}</h2>
+          <h2 className="addedText">{!onEdit.name ? "Breed added successfully!" : (newDog === onEdit ? "No changes were made" : "Breed modified successfully!")}</h2>
         </div>
         <div>
           <button className="closeTemps" onClick={() => {
@@ -187,7 +199,7 @@ export default function Form() {
           <input
             placeholder="Enter name..."
             type="text"
-            value={newDog.name}
+            value={!onEdit.name ? newDog.name : onEdit.name}
             onChange={(event) => {
               handleChange(event);
               setErrors(validate(newDog, event.target.name));

@@ -57,11 +57,11 @@
     height: 30px;
     border: none;
     border-radius: 6px;
-    background-color: rgba(255, 0, 0, 0.114);
+    background-color: rgba(115, 110, 70, 0.114);
     margin: 3px;
-    margin-left: 300px;
+    margin-left: 280px;
     cursor: pointer;
 }
 .editDog:hover {
-    background-color: rgba(255, 0, 0, 0.271);
+    background-color: rgba(80, 73, 46, 0.271);
 }
