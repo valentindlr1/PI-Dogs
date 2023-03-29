@@ -91,6 +91,6 @@ export default function validate(evValue, evName) {
       temperament: "Select at least one temperament",
     };
   }
-  console.log("ERRORS >>")
+  console.log("ERRORS >>", errors)
   return errors;
 }
