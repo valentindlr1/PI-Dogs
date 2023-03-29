@@ -36,7 +36,7 @@ export default function Form() {
       [event.target.name]: event.target.value,
     });
 
-    setErrors(validate(newDog, event.target.name));
+    // setErrors(validate(newDog, event.target.name));
   }
 
   async function handleSubmit(event) {
