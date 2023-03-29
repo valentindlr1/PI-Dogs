@@ -22,6 +22,7 @@ body {
     color: #544c35;
     padding: 8px;
     background-color: #eee5ce;
+    font-size: 15px;
 }
 .filter {
     position: absolute;
@@ -64,4 +65,52 @@ body {
     background-color: #e7dec4;
     font-size: large;
     width: 180px;
+}
+
+@media (max-width: 600px){
+
+.homePage{
+    padding-top: 65px;
+}
+.searchDiv{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.order{
+    position: relative;
+    right: 0px;
+    margin: 9px;
+    margin-top: 18px;
+    font-size: 12px;
+    padding: 7px;
+}
+.selectOrder{
+    font-size: 12px;
+    width: 120px;
+}
+.filter{
+    position: relative;
+    right: 0px;
+    margin: 9px;
+    font-size: 12px;
+    padding: 7px;
+}
+.filterDiv{
+    margin: 6px;
+}
+
+.filterText{
+    font-size: 13px;
+    margin: 0px;
+}
+.filterText input {
+    width: 10px;
+    height: 10px;
+}
+.doShow h2{
+    font-size:12px;
+    margin: 0px;
+    padding: 0px;
+}
 }

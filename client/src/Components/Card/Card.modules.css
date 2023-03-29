@@ -65,3 +65,34 @@
 .editDog:hover {
     background-color: rgba(80, 73, 46, 0.271);
 }
+@media (max-width: 600px){
+    .card{
+        width: 300px;
+        height: 400px;
+    }
+    .link{
+        font-size: 10px;
+    }
+    .temps{
+        font-size: 10px;
+        padding: 5px;
+    }
+    .deleteDog {
+        display: flex;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin: 2px;
+        margin-left: 270px;
+        margin-top: 5px;
+    }
+    .editDog {
+        display: flex;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin: 2px;
+        margin-left: 214px;
+        margin-top: 5px;
+    }
+}

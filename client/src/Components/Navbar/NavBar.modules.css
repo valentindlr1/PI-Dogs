@@ -18,6 +18,8 @@
     border-radius: 9px;
     color: inherit;
     text-decoration: none;
+    display: flex;
+    justify-content: space-between;
 }
 .raza {
     position: absolute;
@@ -28,4 +30,20 @@
     border-radius: 9px;
     color: inherit;
     text-decoration: none;
+}
+
+@media (max-width: 6000px){
+    .bar{
+        font-size: 12px;
+    }
+    .home{
+        font-size: 12px;
+        margin-left:20px
+    }
+    .raza{
+        font-size: 12px;
+        margin-right: 50px;
+        display: flex;
+        width: 60px;
+    }
 }

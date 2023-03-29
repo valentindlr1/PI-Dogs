@@ -22,14 +22,9 @@
     border-radius: 8px;
 }
 .detail {
-    /* display: flex; */
-    
-    /* flex-wrap: wrap; */
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     padding-top: 80px;
-    
 }
 .detailTemps {
     background-color: #3c3c3c;
@@ -50,8 +45,6 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
-    
-    
 }
 .temperDatos {
     flex-direction: column;
@@ -62,4 +55,36 @@
     max-width: 20%;
     padding: 5px;
     border-radius: 8px;
+}
+
+@media (max-width: 600px){
+    .detailTitle{
+        font-size: 18px;
+    }
+    .detail {
+        justify-content: center;
+        align-items: center;
+        padding-top: 70px;
+    }
+    .detailImage {
+        max-width: 80%;
+    }
+    .datos {
+        max-width: 80%;
+        padding: 5px;
+        font-size: 14px;
+    }
+    .temperDatos {
+        max-width: 80%;
+        padding: 5px;
+        font-size: 14px;
+    }
+    .id{
+        font-size: 12px;
+    }
+    .detailTemps {
+        font-size: 11px;
+        margin: 2px;
+        padding: 3px 7px;
+    }
 }

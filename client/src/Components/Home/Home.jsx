@@ -103,6 +103,8 @@ export default function Home() {
       <h2 className="homeTitle">HOME</h2>
       <div className="searchDiv">
         <SearchBar search={onSearch} />
+        <div className="orderFilterDiv">
+
         <label className="order">
           {"Order by... "}
           <select
@@ -128,6 +130,8 @@ export default function Home() {
         >
           Filters 🔍
         </button>
+        
+        </div>
       </div>
 
       <Cards

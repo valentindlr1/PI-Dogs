@@ -9,3 +9,14 @@
     background-color: #f4e4c6;
     border: none;
 }
+
+
+@media (max-width: 600px){
+    .searchBar{
+        padding: 6px;
+        width: 200px;
+        
+        font-size: 12px;
+        
+    }
+}

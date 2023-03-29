@@ -17,17 +17,12 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-
-
-
 /* TEMPERAMENTS SELECT: */
-
 .notShow {
     display: none;
 }
 
-  
-  /* Style the form container */
+/* Style the form container */
   .container {
     position: absolute;
     display: flex;
@@ -218,4 +213,100 @@
     margin-top: 20px;
     max-width: 40%;
     border-radius: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      justify-content: center;
+      right: 33%;
+      left: 7px;
+      width: 85%;
+      padding: 20px;
+      top: 12%;
+      font-size: 12px;
+    }
+    .h2 {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 8px;
+      padding: 5px;
+    }
+    .text{
+      font-size: 12px;
+      padding: 7px;
+    }
+    .warning{
+      font-size: 12px;
+      padding: 7px;
+    }
+    .warningMinmax{
+      font-size: 12px;
+      padding: 7px;
+    }
+    .danger{
+      font-size: 10px;
+      padding: 7px;
+      margin: 2px;
+    }
+    .minmax{
+      font-size: 12px;
+      padding: 7px;
+    }
+    .openTemps {
+      font-size: 12px;
+      padding: 6px;
+    }
+    .sub{
+      font-size: 14px;
+      padding: 8px;
+    }
+    .doShow{
+      font-size:14px;
+      position: fixed;
+      left: 3%;
+      top: 10%;
+      max-width: 86%;
+      padding: 15px;
+    }
+    .tempTitle{
+      font-size:14px;
+      padding:0px;
+      margin: 0px;
+    }
+    .eachTemp{
+      font-size: 10px;
+      padding: 3px;
+      margin: 2px;
+    }
+    .markedTemp{
+      font-size: 10px;
+      padding: 3px;
+      margin: 2px;
+    }
+    .closeTemps {
+      font-size: 10px;
+      padding: 2px;
+      max-width: 100px;
+      margin-top: 5px;
+  }
+  .added {
+    position: fixed;
+    left: 10%;
+    top: 40%;
+    width: 70%;
+    padding: 20px;
+  }
+  .added h2{
+    font-size: 14px;
+  }
+  .incompleteData {
+    position: fixed;
+    left: 10%;
+    top: 40%;
+    width: 70%;
+    padding: 20px;
+  }
+  .incompleteData h2{
+    font-size: 14px;
+  }
   }

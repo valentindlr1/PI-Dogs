@@ -1,11 +1,16 @@
 .welcome {
-    position: absolute;
-    margin-top: 14%;
-    margin-left: 40%;
+    /* position: absolute; */
+    /* margin-top: 14%;
+    margin-left: 40%; */
+    display:flex;
+    flex-direction: column;
     background-color: #5d574a70;
     padding: 20px;
     border-radius: 10px;
-    
+    width: 300px;
+    height: 200px;
+    justify-content: center;
+    align-content: center;
 }
 .welcomeBG{
     position: absolute;
@@ -13,6 +18,8 @@
     width: 100%;
     height: 100%;
     background-image: url('../../img/repetitive-bg.webp');
+    justify-content: center;
+    align-items: center;
 }
 .welcomeBut {
     padding: 9px;
@@ -31,4 +38,16 @@
     position: absolute;
     left: 0px;
     z-index: 3;
+}
+@media (max-width: 600px){
+    .welcome{
+        width: 250px;
+        height: 170px;
+        font-size: 12px;
+    }
+    .welcomeBut{
+        padding: 6px;
+        font-size: 14px;
+        width: 200px;
+    }
 }

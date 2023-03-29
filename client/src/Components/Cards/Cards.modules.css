@@ -13,7 +13,6 @@
 .pages {
     justify-content: center;
     display: flex;
-    
     flex-direction: row;
 }
 .movePage {
@@ -25,4 +24,18 @@
 }
 .movePage:hover{
     background-color: #E2D4B7;
+}
+
+@media (max-width: 600px) {
+    .movePage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 6px;
+        font-size: 12px;
+        max-width: 80px;
+    }
+    .pages{
+        font-size: 12px;
+    }
 }
