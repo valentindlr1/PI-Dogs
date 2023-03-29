@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { editDog } from "../../redux/actions";
+import validateAll from "./validateAll";
 
 export default function Form() {
   const onEdit = useSelector((state) => state.onEdit);
@@ -41,7 +42,7 @@ export default function Form() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    setErrors(validateAll(newDog))
     try {
       if (
         !newDog.name.length ||
@@ -50,7 +51,8 @@ export default function Form() {
         !newDog.heightMin.length ||
         !newDog.heightMax.length ||
         !newDog.life.length ||
-        !newDog.temperament.length
+        !newDog.temperament.length ||
+        Object.keys(errors).length > 0
       ) {
         setIncomplete(true);
         return;
@@ -167,7 +169,10 @@ export default function Form() {
         </div>
         <div className="allTemps">{allTemps}</div>
         <div>
-          <button className="closeTemps" onClick={() => setShow(false)}>
+          <button className="closeTemps" onClick={(event) => {
+            setShow(false)
+            setErrors(validate(newDog.temperament, "temperament"))
+            }}>
             Accept
           </button>
         </div>
