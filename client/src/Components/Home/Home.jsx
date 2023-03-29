@@ -143,7 +143,7 @@ export default function Home() {
       />
 
       <div className={(show && "doShow") || "notShow"}>
-        <h2>Filtrar por:</h2>
+        <h2>Filter by:</h2>
         <div>
           <div className="filterDiv">
             <label className="filterText">
@@ -151,13 +151,13 @@ export default function Home() {
                 type="checkbox"
                 onClick={() => setMyCreated(!myCreated)}
               ></input>
-              Mis creaciones
+              My Creations
             </label>
           </div>
           <div>
             <label className="filterText">
               <input type="checkbox" onClick={handleFilterTemp}></input>
-              Temperamentos
+              Temperaments
             </label>
           </div>
         </div>
