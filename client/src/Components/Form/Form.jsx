@@ -59,7 +59,7 @@ export default function Form() {
 
       if (!onEdit.name) {
         await axios
-          .get("http://localhost:3001/dogs")
+          .get("/dogs")
           .then((res) => res.data)
           .then((dogs) => {
             dogs.forEach((dog) => {
@@ -70,7 +70,7 @@ export default function Form() {
             });
           });
 
-        await axios.post("http://localhost:3001/dogs", {
+        await axios.post("/dogs", {
           dog: {
             name: newDog.name,
             weight: newDog.weightMin + " - " + newDog.weightMax,
@@ -81,7 +81,7 @@ export default function Form() {
           temperament: newDog.temperament,
         });
       } else {
-        await axios.put("http://localhost:3001/dogs", {
+        await axios.put("/dogs", {
           name: onEdit.name,
           weight: newDog.weightMin + " - " + newDog.weightMax,
           height: newDog.heightMin + " - " + newDog.heightMax,
@@ -151,7 +151,7 @@ export default function Form() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/temperaments")
+      .get("/temperaments")
       .then((res) => res.data)
       .then((arr) => {
         setTemps(arr);

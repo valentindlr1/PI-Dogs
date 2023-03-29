@@ -11,7 +11,7 @@ export default function Card(props) {
   const navigate = useNavigate();
 
   async function handleDelete() {
-    await axios.delete("http://localhost:3001/dogs/" + id);
+    await axios.delete("/dogs/" + id);
     dispatch(deleteDog(id));
   }
   function handleEdit() {

@@ -22,7 +22,7 @@ export default function Home() {
     try {
       if (input !== "") {
         const result = await axios.get(
-          "http://localhost:3001/name?name=" + input
+          "/name?name=" + input
         );
         const found = result.data;
         dispatch(setDogs(found));
@@ -35,7 +35,7 @@ export default function Home() {
     }
   };
   const gets = async () => {
-    const perros = await axios.get("http://localhost:3001/dogs");
+    const perros = await axios.get("/dogs");
     dispatch(setDogs(perros.data));
   };
   function handleTemps(event, value) {
@@ -86,7 +86,7 @@ export default function Home() {
   useEffect(() => {
     gets();
     axios
-      .get("http://localhost:3001/temperaments")
+      .get("/temperaments")
       .then((res) => res.data)
       .then((arr) => {
         setTemps(arr);

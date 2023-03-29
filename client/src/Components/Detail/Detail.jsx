@@ -26,7 +26,7 @@ export default function Detail() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/dogs/" + id)
+      .get("/dogs/" + id)
       .then((res) => res.data)
       .then((perro) => {
         if (perro.name) {
