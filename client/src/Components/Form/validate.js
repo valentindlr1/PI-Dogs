@@ -1,7 +1,7 @@
-export default function validate(inputs, evName) {
+export default function validate(evValue, evName) {
   let errors = {};
 
-  if (evName === "name" && inputs.name.length < 2) {
+  if (evName === "name" && evValue.length < 2) {
     errors = {
       ...errors,
       name: "Name must have at least two characters length",
@@ -9,7 +9,7 @@ export default function validate(inputs, evName) {
   }
   if (
     (evName === "weightMin" || evName === "weightMax") &&
-    (!inputs.weightMin.length || !inputs.weightMax.length)
+    (!evValue.length || !evValue.length)
   ) {
     errors = {
       ...errors,
@@ -18,20 +18,20 @@ export default function validate(inputs, evName) {
   }
   if (
     (evName === "heightMin" || evName === "heightMax") &&
-    (!inputs.heightMin.length || !inputs.heightMax.length)
+    (!evValue.length || !evValue.length)
   ) {
     errors = {
       ...errors,
       height: "Set both min and max height",
     };
   }
-  if (evName === "life" && inputs.life.length === 0) {
+  if (evName === "life" && evValue.length === 0) {
     errors = {
       ...errors,
       life: "Set a life span",
     };
   }
-  if (evName === "temperament" && !inputs.temperament.length) {
+  if (evName === "temperament" && !evValue.length) {
     errors = {
       ...errors,
       temperament: "Select at least one temperament",

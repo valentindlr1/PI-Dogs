@@ -36,7 +36,7 @@ export default function Form() {
       [event.target.name]: event.target.value,
     });
 
-    // setErrors(validate(newDog, event.target.name));
+    setErrors(validate(event.target.value, event.target.name));
   }
 
   async function handleSubmit(event) {
@@ -231,7 +231,7 @@ export default function Form() {
             value={!onEdit.name ? newDog.name : onEdit.name}
             onChange={(event) => {
               handleChange(event);
-              setErrors(validate(newDog, event.target.name));
+              // setErrors(validate(newDog, event.target.name));
             }}
             name="name"
             className={(errors?.name && "warning") || "text"}
@@ -245,7 +245,7 @@ export default function Form() {
             value={newDog.weightMin}
             onChange={(event) => {
               handleChange(event);
-              setErrors(validate(newDog, event.target.name));
+              // setErrors(validate(newDog, event.target.name));
             }}
             name="weightMin"
             className={(errors?.weight && "warningMinmax") || "minmax"}
@@ -256,7 +256,7 @@ export default function Form() {
             value={newDog.weightMax}
             onChange={(event) => {
               handleChange(event);
-              setErrors(validate(newDog, event.target.name));
+              // setErrors(validate(newDog, event.target.name));
             }}
             name="weightMax"
             className={(errors?.weight && "warningMinmax") || "minmax"}
@@ -271,7 +271,7 @@ export default function Form() {
             value={newDog.heightMin}
             onChange={(event) => {
               handleChange(event);
-              setErrors(validate(newDog, event.target.name));
+              // setErrors(validate(newDog, event.target.name));
             }}
             name="heightMin"
             className={(errors?.height && "warningMinmax") || "minmax"}
@@ -282,7 +282,7 @@ export default function Form() {
             value={newDog.heightMax}
             onChange={(event) => {
               handleChange(event);
-              setErrors(validate(newDog, event.target.name));
+              // setErrors(validate(newDog, event.target.name));
             }}
             name="heightMax"
             className={(errors?.height && "warningMinmax") || "minmax"}
@@ -296,7 +296,7 @@ export default function Form() {
             value={newDog.life}
             onChange={(event) => {
               handleChange(event);
-              setErrors(validate(newDog, event.target.name));
+              // setErrors(validate(newDog, event.target.name));
             }}
             name="life"
             className={(errors?.life && "warning") || "text"}
