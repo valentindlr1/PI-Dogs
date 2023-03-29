@@ -13,5 +13,6 @@ export default function validateAll (dog) {
         ...validate("life", dog.life),
         ...validate("temperament", dog.temperament)
     }
+    console.log("ERRORS ALL>>", errors)
     return errors
 }
